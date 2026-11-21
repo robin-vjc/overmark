@@ -1,7 +1,8 @@
 name: Release
 
-# Push a tag like `v1.2.3` to build installers for every platform and attach them to a draft
-# release. Publish the draft on GitHub when it looks good.
+# Push a tag like `v1.2.3` to build installers for every platform. They're attached to a draft
+# release, which is published automatically once every platform has built successfully.
+# If any build fails, the release stays a draft so a broken release never goes public.
 #
 # Files get the same name in every release (no version number), so the README can link to
 # `releases/latest/download/<file>` and those links never need updating.
@@ -90,3 +91,10 @@ jobs:
               ;;
           esac
           gh release upload "$GITHUB_REF_NAME" out/* --clobber
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish the release
+        run: gh release edit "$GITHUB_REF_NAME" --draft=false --latest
