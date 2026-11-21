@@ -1,4 +1,4 @@
-# Overmark
+# <img src="src-tauri/icons/128x128@2x.png" alt="" width="44" align="center"> Overmark
 
 ![Overmark toolbar](.github/toolbar.png)
 
