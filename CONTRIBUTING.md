@@ -55,7 +55,7 @@ src-tauri/src/           Backend (Rust)
 
 ## App icon
 
-The app icon is drawn in [`app-icon.svg`](app-icon.svg). After editing it, run `pnpm icons` to regenerate the PNG, ICO and ICNS files in `src-tauri/icons/`.
+The app icon is drawn in [`app-icon.svg`](app-icon.svg). After editing it, run `pnpm icons` (or `pnpm icons path/to/icon.png`) to regenerate the PNG, ICO and ICNS files in `src-tauri/icons/`.
 
 ## Guidelines
 

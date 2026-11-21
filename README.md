@@ -1,22 +1,30 @@
 # Overmark
 
+**Draw on your screen. Nothing more, nothing less.**
+
 Overmark is a lightweight, open-source screen annotation tool for presentations, screen sharing, tutorials and recordings. Draw freehand, add rectangles, ellipses, arrows and text on top of any app, then move, resize or delete them like objects in a slide deck.
+
+<!-- TODO: add a short demo GIF here, e.g. ![Overmark demo](docs/demo.gif) -->
 
 Built with [Tauri](https://tauri.app) and [Konva](https://konvajs.org). Runs on Windows, macOS and Linux.
 
-I find myself often wanting to draw on the screen while, e.g., giving presentations. There already are tools out there for this:
-* [EpicPen](https://epicpen.com/)
-* ZoomIt, in Microsoft's [PowerToys](https://github.com/microsoft/PowerToys)
-* [gInk](https://github.com/geovens/gInk)
-* [pointToFix](https://www.pointofix.de/hilfe_en.php)
+## Why Overmark?
 
-However, I wanted something
-* lightweight & fast -- overmark's memory and CPU footprints are tiny
-* simple to use
-* modern looking
-* private -- overmark does not have *any* telemetry at all; you can check the code and build it yourself
+I often want to draw on my screen, for example while giving a presentation. There are already tools for this:
 
-None of the options above filled this gap. Hence why I created overmark.
+- [Epic Pen](https://epicpen.com/)
+- ZoomIt, part of Microsoft's [PowerToys](https://github.com/microsoft/PowerToys)
+- [gInk](https://github.com/geovens/gInk)
+- [Pointofix](https://www.pointofix.de/hilfe_en.php)
+
+However, I wanted something that is:
+
+- **Lightweight and fast**: near-zero CPU when idle, and a small installer
+- **Simple to use**: a compact toolbar plus single-key shortcuts
+- **Modern looking**
+- **Private**: no telemetry of any kind. You can read the code and build it yourself.
+
+None of these quite fit what I was looking for, so I built Overmark.
 
 ## Features
 
@@ -58,13 +66,13 @@ On macOS, use <kbd>Cmd</kbd> instead of <kbd>Ctrl</kbd>.
 
 ## Install
 
-Download the latest release for your platform from the [Releases](../../releases) page.
+Download the latest release for your platform from the [Releases](https://github.com/robin-vjc/overmark/releases) page.
 
 | Platform        | Status                                                                            |
 | --------------- | --------------------------------------------------------------------------------- |
 | Windows 10/11   | ✅ Supported                                                                      |
-| macOS 11+       | ✅ Supported                                                                      |
-| Linux (X11)     | ✅ Supported (best effort)                                                        |
+| macOS 11+       | 🧪 Untested: feedback welcome                                                     |
+| Linux (X11)     | 🧪 Untested: feedback welcome                                                     |
 | Linux (Wayland) | ⚠️ Limited: some compositors restrict always-on-top overlays and global shortcuts |
 
 ## Build from source
@@ -79,9 +87,14 @@ pnpm tauri dev      # run in development
 pnpm tauri build    # produce an installer
 ```
 
-## Note on Privacy
+## Privacy
 
-Privacy is enforced by the app's configuration, not just promised. The webview has a strict Content Security Policy that blocks outside connections, and the app is granted no network, filesystem or shell permissions ([`capabilities/default.json`](src-tauri/capabilities/default.json)). The only file it writes is its own `settings.json`.
+Privacy is enforced by the app's configuration, not just promised:
+
+- The webview has a strict Content Security Policy that blocks outside connections.
+- The app is granted no network, filesystem or shell permissions ([`capabilities/default.json`](src-tauri/capabilities/default.json)).
+- There is no telemetry and no auto-updater.
+- The only file it writes is its own `settings.json`.
 
 ## Contributing
 

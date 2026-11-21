@@ -1,4 +1,5 @@
-// Regenerates the desktop app icons from `app-icon.svg`.
+// Regenerates the desktop app icons from a source image.
+// Usage: `pnpm icons [path]`, where `path` is a square SVG or a PNG of at least 1024×1024 px (default: app-icon.svg).
 // `tauri icon` also emits mobile and Windows Store assets, which Overmark doesn't ship,
 // so we generate into a temp folder and copy only what `tauri.conf.json` references.
 import { execSync } from "node:child_process";
@@ -15,9 +16,10 @@ const DESKTOP_ICONS = [
   "icon.icns",
 ];
 
+const source = process.argv[2] ?? "app-icon.svg";
 const out = mkdtempSync(join(tmpdir(), "overmark-icons-"));
 try {
-  execSync(`pnpm tauri icon app-icon.svg --output "${out}"`, { stdio: "inherit" });
+  execSync(`pnpm tauri icon "${source}" --output "${out}"`, { stdio: "inherit" });
   for (const file of DESKTOP_ICONS) {
     copyFileSync(join(out, file), join("src-tauri", "icons", file));
   }
