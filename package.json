@@ -14,17 +14,21 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "tauri": "tauri",
-    "icons": "node scripts/icons.mjs",
+    "icons": "node src-tauri/icons/generate.mjs",
     "typecheck": "tsc",
     "lint": "eslint .",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format": "prettier --write . \"!pnpm-lock.yaml\"",
+    "format:check": "prettier --check . \"!pnpm-lock.yaml\"",
     "check": "pnpm typecheck && pnpm lint && pnpm format:check"
   },
   "dependencies": {
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-store": "^2.5.1",
     "konva": "^10.10.0"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "trailingComma": "all"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

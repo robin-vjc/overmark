@@ -5,6 +5,8 @@ const host = process.env.TAURI_DEV_HOST;
 
 // Options tailored for `tauri dev` / `tauri build`: https://v2.tauri.app/start/frontend/vite/
 export default defineConfig({
+  // The frontend, including index.html, lives in src/.
+  root: "src",
   // Keep Rust errors visible in the terminal.
   clearScreen: false,
   server: {
@@ -13,11 +15,10 @@ export default defineConfig({
     strictPort: true,
     host: host || false,
     hmr: host ? { protocol: "ws", host, port: 1421 } : undefined,
-    watch: {
-      ignored: ["**/src-tauri/**"],
-    },
   },
   build: {
+    outDir: "../dist",
+    emptyOutDir: true,
     target: "es2022",
   },
 });

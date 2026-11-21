@@ -3,7 +3,7 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  { ignores: ["dist", "src-tauri/target", "src-tauri/gen", "node_modules"] },
+  { ignores: ["dist", "src-tauri/target", "src-tauri/gen"] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
@@ -18,7 +18,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ["*.config.{js,ts}", "scripts/**"],
+    files: ["*.config.{js,ts}", "src-tauri/icons/*.mjs"],
     languageOptions: { globals: globals.node },
   },
 );

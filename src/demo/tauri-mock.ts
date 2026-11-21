@@ -1,5 +1,5 @@
 // Simulates the Tauri backend so the overlay UI can run in a normal browser.
-// Used only by `demo.html`, to preview the UI and take README screenshots.
+// Used only by the demo page (`src/demo/index.html`), to preview the UI and take README screenshots.
 
 type Callback = (event: { event: string; id: number; payload: unknown }) => void;
 

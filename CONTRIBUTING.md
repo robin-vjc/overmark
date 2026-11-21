@@ -8,7 +8,7 @@ Thanks for helping out! Bug reports, ideas and pull requests are all welcome.
 2. `pnpm install`
 3. `pnpm tauri dev`
 
-To work on the UI without the desktop app, run `pnpm dev` and open http://localhost:1420/demo.html. It runs the overlay in a normal browser over a sample slide, with the Rust backend simulated by `scripts/tauri-mock.ts`. Click-through and global shortcuts don't work there. This is also how `.github/toolbar.png` was made.
+To work on the UI without the desktop app, run `pnpm dev` and open http://localhost:1420/demo/. It runs the overlay in a normal browser over a sample slide, with the Rust backend simulated by `src/demo/tauri-mock.ts`. Click-through and global shortcuts don't work there. This is also how `.github/toolbar.png` was made.
 
 ## Before opening a pull request
 
@@ -35,6 +35,7 @@ Overmark opens one transparent, always-on-top, borderless window per monitor. Ea
 
 ```
 src/                     Frontend (TypeScript, no UI framework)
+├─ index.html            Page loaded by each overlay window
 ├─ main.ts               Wires everything together; defines toolbar/shortcut actions
 ├─ ipc.ts                Typed wrappers for Rust commands
 ├─ settings.ts           Shared, persisted settings and the color palette
@@ -45,19 +46,22 @@ src/                     Frontend (TypeScript, no UI framework)
 ├─ tools/                One file per tool (pen, shapes, text, select)
 ├─ history/              Undo/redo stack and commands
 ├─ input/                Pointer routing, shortcuts, click-through hit test
-└─ ui/                   Toolbar and icons
+├─ ui/                   Toolbar and icons
+└─ demo/                 Browser-only preview with a simulated backend (not shipped)
 
-src-tauri/src/           Backend (Rust)
-├─ lib.rs                App setup, plugins, commands
-├─ overlay.rs            Creates one overlay per monitor
-├─ passthrough.rs        Click-through polling and draw/select mode
-├─ history.rs            Global undo/redo order across overlays
-└─ hotkeys.rs            Global show/hide shortcut
+src-tauri/
+├─ src/                  Backend (Rust)
+│  ├─ lib.rs             App setup, plugins, commands
+│  ├─ overlay.rs         Creates one overlay per monitor
+│  ├─ passthrough.rs     Click-through polling and draw/select mode
+│  ├─ history.rs         Global undo/redo order across overlays
+│  └─ hotkeys.rs         Global show/hide shortcut
+└─ icons/                App icons, their source (app-icon.svg) and generator
 ```
 
 ## App icon
 
-The app icon is drawn in [`app-icon.svg`](app-icon.svg). After editing it, run `pnpm icons` (or `pnpm icons path/to/icon.png`) to regenerate the PNG, ICO and ICNS files in `src-tauri/icons/`.
+The app icon is drawn in [`src-tauri/icons/app-icon.svg`](src-tauri/icons/app-icon.svg). After editing it, run `pnpm icons` (or `pnpm icons path/to/icon.png`) to regenerate the PNG, ICO and ICNS files next to it.
 
 ## Guidelines
 
