@@ -2,62 +2,18 @@
 
 **Draw on your screen. Nothing more, nothing less.**
 
-Overmark is a lightweight, open-source screen annotation tool for presentations, screen sharing, tutorials and recordings. Draw freehand, add rectangles, ellipses, arrows and text on top of any app, then move, resize or delete them like objects in a slide deck.
+Overmark is a screen annotation tool for presentations, screen sharing, tutorials and recordings. Draw freehand, add rectangles, ellipses, arrows and text on top of any app, then move, resize or delete them like objects in a slide deck.
 
-<!-- TODO: add a short demo GIF here, e.g. ![Overmark demo](docs/demo.gif) -->
-
-Built with [Tauri](https://tauri.app) and [Konva](https://konvajs.org). Runs on Windows, macOS and Linux.
-
-## Why Overmark?
-
-I often want to draw on my screen, for example while giving a presentation. There are already tools for this:
-
-- [Epic Pen](https://epicpen.com/)
-- [ZoomIt](https://github.com/microsoft/PowerToys), part of Microsoft's PowerToys
-- [gInk](https://github.com/geovens/gInk)
-- [Pointofix](https://www.pointofix.de/hilfe_en.php)
-
-However, I wanted something that is:
-
-- ⚡ **Lightweight and fast**: near-zero CPU when idle, and a small installer
-- 🎯 **Simple to use**
+- ⚡ **Lightweight and fast** (e.g., 1.4 MB Windows installer)
+- 🎯 **Simple to use**: a compact toolbar plus single-key shortcuts
 - ✨ **Modern looking**
 - 🔒 **Private**: no telemetry of any kind ([see how](#privacy))
 - 🧩 **Open source**: MIT licensed, contributions welcome
 - 🌍 **Cross-platform**: Windows, macOS and Linux
 
-None of these quite fit what I was looking for, so I built Overmark.
+<!-- TODO: add a short demo GIF here, e.g. ![Overmark demo](docs/demo.gif) -->
 
-### How it compares
-
-|                                                  | Overmark |   Epic Pen    |  ZoomIt   |   gInk    |     Pointofix     |
-| ------------------------------------------------ | :------: | :-----------: | :-------: | :-------: | :---------------: |
-| Free                                             |    ✅    | 🟡 Basic only |    ✅     |    ✅     |        ✅         |
-| Open source                                      |    ✅    |      ❌       |    ✅     |    ✅     | 🟡 Freeware[^src] |
-| Windows                                          |    ✅    |      ✅       |    ✅     |    ✅     |        ✅         |
-| macOS                                            | ✅[^os]  |      ❌       |    ✅     |    ❌     |        ❌         |
-| Linux                                            | ✅[^os]  |      ❌       |    ❌     |    ❌     |        ❌         |
-| Draw over a live screen and keep using your apps |    ✅    |      ✅       | 🟡[^live] |    ✅     | ❌ Freezes screen |
-| Shapes and arrows                                |    ✅    |    🟡 Pro     |    ✅     |    ❌     |        ✅         |
-| Text                                             |    ✅    |    🟡 Pro     |    ✅     |    ❌     |        ✅         |
-| No telemetry                                     |    ✅    |    ❌[^ep]    |  🟡[^pt]  | ✅[^gink] | ❔ Not documented |
-| Download size (Windows)                          |  1.4 MB  |      ❔       |  242 MB   |  0.4 MB   |      1.3 MB       |
-
-Each of these tools also does things Overmark doesn't, such as zooming, screen recording, whiteboards and pen pressure. Overmark focuses on annotating a live screen and staying out of the way.
-
-[^src]: Pointofix is free to download, but we couldn't find published source code.
-
-[^os]: The macOS and Linux builds are not tested yet. Feedback is welcome.
-
-[^live]: ZoomIt's default drawing mode works on a frozen snapshot of the screen. Its LiveDraw mode draws over the live screen.
-
-[^ep]: Epic Pen's [privacy policy](https://epicpen.com/privacy) covers the app and says usage data is collected automatically. The free Basic version also shows in-app ads.
-
-[^pt]: PowerToys diagnostic data is [optional and off by default](https://github.com/microsoft/PowerToys/blob/main/DATA_AND_PRIVACY.md).
-
-[^gink]: No network code found in gInk's source.
-
-_Comparison based on each project's website and documentation as of November 2026. Spotted a mistake? Please [open an issue](https://github.com/robin-vjc/overmark/issues)._
+Built with [Tauri](https://tauri.app) and [Konva](https://konvajs.org).
 
 ## Features
 
@@ -65,11 +21,9 @@ _Comparison based on each project's website and documentation as of November 202
 - **Rectangle, ellipse and arrow**: quick shapes for highlighting (hold <kbd>Shift</kbd> for squares, circles and 45° arrows)
 - **Text**: type anywhere on screen, with adjustable size
 - **Select, move, resize, rotate**: click any annotation to drag it or resize it with handles
-- **Click-through by default**: in Select mode, clicks go to the app underneath unless you click an annotation or the toolbar
 - **Undo and redo everything**: drawing, moving, resizing, recoloring, deleting, text edits and clearing
 - **Compact, draggable toolbar**, plus keyboard shortcuts
 - **Multi-monitor**: one overlay per display
-- **Remembers your settings**: color, width, text size and toolbar position
 
 ## Shortcuts
 
@@ -101,6 +55,13 @@ On macOS, use <kbd>Cmd</kbd> instead of <kbd>Ctrl</kbd>.
 
 Download the latest release for your platform from the [Releases](https://github.com/robin-vjc/overmark/releases) page.
 
+On Windows, pick one:
+
+- **Installer** (`Overmark_x.y.z_x64-setup.exe`): adds a Start menu entry and an uninstaller, and installs WebView2 if it's missing.
+- **Portable** (`Overmark_x.y.z_x64-portable.exe`): nothing to install, just run it. It needs WebView2, which comes with Windows 11 and up-to-date Windows 10. Settings are kept in `%APPDATA%\app.overmark`.
+
+Windows may show a SmartScreen warning because the app isn't code-signed yet. Click **More info**, then **Run anyway**.
+
 | Platform        | Status                                                                            |
 | --------------- | --------------------------------------------------------------------------------- |
 | Windows 10/11   | ✅ Supported                                                                      |
@@ -128,6 +89,15 @@ Privacy is enforced by the app's configuration:
 - The app is granted no network, filesystem or shell permissions ([`capabilities/default.json`](src-tauri/capabilities/default.json)).
 - There is no telemetry and no auto-updater.
 - The only file it writes is its own `settings.json`.
+
+## Alternatives
+
+These are other tools similar to Overmark. None quite fit what I was looking for:
+
+- [Epic Pen](https://epicpen.com/)
+- [ZoomIt](https://learn.microsoft.com/en-us/sysinternals/downloads/zoomit), part of Microsoft's [PowerToys](https://github.com/microsoft/PowerToys)
+- [gInk](https://github.com/geovens/gInk)
+- [Pointofix](https://www.pointofix.de/hilfe_en.php)
 
 ## Contributing
 
