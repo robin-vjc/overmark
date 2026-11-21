@@ -58,13 +58,9 @@ On macOS, use <kbd>Cmd</kbd> instead of <kbd>Ctrl</kbd>.
 | 🧹  | Clear all                                   | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd>                                |
 | ⏹️  | Deselect, then back to Select               | <kbd>Esc</kbd>                                                               |
 
-- In Select mode, clicks go through to the app underneath unless you click an annotation or the toolbar.
 - Hold <kbd>Shift</kbd> while drawing for squares, circles and 45° arrows.
 - With shapes selected, <kbd>Ctrl</kbd>+<kbd>Scroll</kbd> and the color keys change those shapes.
 - In Select mode, double-click text to edit it. <kbd>Esc</kbd> or <kbd>Ctrl</kbd>+<kbd>Enter</kbd> finishes editing.
-- Undo and redo cover everything: drawing, moving, resizing, recoloring, deleting, text edits and clearing.
-- More colors are on the toolbar. Click the size indicator for a slider, or scroll over the toolbar to change the size. Drag the toolbar by its handle.
-- With several monitors, you can draw on all of them.
 - Keyboard shortcuts other than the global one only work while Overmark has focus. After you click through to another app, click an annotation or the toolbar first.
 
 ## Build from source
