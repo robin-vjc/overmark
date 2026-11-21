@@ -1,4 +1,4 @@
-# <img src="src-tauri/icons/128x128@2x.png" alt="" width="40" align="left">&nbsp;Overmark
+# <img src="src-tauri/icons/128x128@2x.png" alt="" width="36" align="center">Overmark
 
 <p align="center"><img src=".github/toolbar.png" alt="Overmark toolbar"></p>
 
