@@ -55,7 +55,8 @@ src-tauri/
 │  ├─ overlay.rs         Creates one overlay per monitor
 │  ├─ passthrough.rs     Click-through polling and draw/select mode
 │  ├─ history.rs         Global undo/redo order across overlays
-│  └─ hotkeys.rs         Global show/hide shortcut
+│  ├─ hotkeys.rs         Global show/hide shortcut
+│  └─ tray.rs            System tray icon and menu
 └─ icons/                App icons, their source (app-icon.svg) and generator
 ```
 

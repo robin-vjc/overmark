@@ -162,3 +162,9 @@ pub fn hide_overlays(app: AppHandle, state: State<'_, Passthrough>) {
         toggle_visibility(&app);
     }
 }
+
+pub fn show(app: &AppHandle) {
+    if !app.state::<Passthrough>().visible.load(Ordering::Relaxed) {
+        toggle_visibility(app);
+    }
+}

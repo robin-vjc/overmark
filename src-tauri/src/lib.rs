@@ -4,6 +4,7 @@ mod history;
 mod hotkeys;
 mod overlay;
 mod passthrough;
+mod tray;
 
 #[tauri::command]
 fn quit(app: tauri::AppHandle) {
@@ -13,8 +14,10 @@ fn quit(app: tauri::AppHandle) {
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
-        // A second launch would stack another set of overlays; ignore it instead.
-        .plugin(tauri_plugin_single_instance::init(|_, _, _| {}))
+        // A second launch would stack another set of overlays; show the existing ones instead.
+        .plugin(tauri_plugin_single_instance::init(|app, _, _| {
+            passthrough::show(app);
+        }))
         .plugin(tauri_plugin_store::Builder::new().build())
         .plugin(hotkeys::plugin())
         .manage(passthrough::Passthrough::default())
@@ -32,6 +35,7 @@ pub fn run() {
         ])
         .setup(|app| {
             overlay::create_all(app.handle())?;
+            tray::create(app.handle())?;
             hotkeys::register(app.handle());
             passthrough::start_polling(app.handle().clone());
             Ok(())
