@@ -1,6 +1,10 @@
 name: Release
 
-# Push a tag like `v0.1.0` to build installers and create a draft release.
+# Push a tag like `v1.2.3` to build installers for every platform and attach them to a draft
+# release. Publish the draft on GitHub when it looks good.
+#
+# Files get the same name in every release (no version number), so the README can link to
+# `releases/latest/download/<file>` and those links never need updating.
 on:
   push:
     tags: ["v*"]
@@ -8,8 +12,31 @@ on:
 permissions:
   contents: write
 
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GH_REPO: ${{ github.repository }}
+
 jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create draft release
+        run: |
+          tag="$GITHUB_REF_NAME"
+          if is_draft=$(gh release view "$tag" --json isDraft --jq .isDraft 2>/dev/null); then
+            if [ "$is_draft" = "true" ]; then
+              # A draft from an earlier run of this tag: start again so no stale files remain.
+              gh release delete "$tag" --yes
+            else
+              echo "Release $tag is already published; its files will be replaced."
+              exit 0
+            fi
+          fi
+          gh release create "$tag" --draft --verify-tag --title "Overmark $tag" \
+            --notes "Download Overmark for your platform below. See the [README](https://github.com/$GH_REPO#install) for which file to pick."
+
   build:
+    needs: create-release
     strategy:
       fail-fast: false
       matrix:
@@ -40,25 +67,26 @@ jobs:
           node-version: 24
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - uses: tauri-apps/tauri-action@v0
-        id: tauri
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tagName: ${{ github.ref_name }}
-          releaseName: Overmark ${{ github.ref_name }}
-          releaseBody: See the assets below to download Overmark for your platform.
-          releaseDraft: true
-          prerelease: false
-          args: ${{ matrix.args }}
-      # The frontend is embedded in the binary, so the plain .exe runs without installing.
-      - name: Upload portable Windows executable
-        if: runner.os == 'Windows'
+      - run: pnpm tauri build ${{ matrix.args }}
+      - name: Upload to the release
         shell: bash
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          version="${GITHUB_REF_NAME#v}"
-          portable="Overmark_${version}_x64-portable.exe"
-          cp src-tauri/target/release/overmark.exe "$portable"
-          gh release upload "$GITHUB_REF_NAME" "$portable" --clobber
+          mkdir out
+          bundle=src-tauri/target/release/bundle
+          case "$RUNNER_OS" in
+            Windows)
+              cp "$bundle"/nsis/*-setup.exe out/Overmark_windows_x64-setup.exe
+              cp "$bundle"/msi/*.msi out/Overmark_windows_x64.msi
+              # The frontend is embedded in the binary, so the plain .exe runs without installing.
+              cp src-tauri/target/release/overmark.exe out/Overmark_windows_x64-portable.exe
+              ;;
+            macOS)
+              cp src-tauri/target/universal-apple-darwin/release/bundle/dmg/*.dmg out/Overmark_macos_universal.dmg
+              ;;
+            Linux)
+              cp "$bundle"/appimage/*.AppImage out/Overmark_linux_x86_64.AppImage
+              cp "$bundle"/deb/*.deb out/Overmark_linux_amd64.deb
+              cp "$bundle"/rpm/*.rpm out/Overmark_linux_x86_64.rpm
+              ;;
+          esac
+          gh release upload "$GITHUB_REF_NAME" out/* --clobber

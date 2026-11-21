@@ -1,13 +1,12 @@
 # Overmark
 
+![Overmark toolbar](.github/toolbar.png)
+
 [![CI](https://github.com/robin-vjc/overmark/actions/workflows/ci.yml/badge.svg)](https://github.com/robin-vjc/overmark/actions/workflows/ci.yml)
 [![Latest release](https://img.shields.io/github/v/release/robin-vjc/overmark?sort=semver)](https://github.com/robin-vjc/overmark/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/robin-vjc/overmark/total)](https://github.com/robin-vjc/overmark/releases)
 [![License: MIT](https://img.shields.io/github/license/robin-vjc/overmark)](LICENSE)
 <br>
-![Windows: supported](https://img.shields.io/badge/Windows-supported-brightgreen?logo=windows)
-![macOS: untested](https://img.shields.io/badge/macOS-untested-yellow?logo=apple)
-![Linux: untested](https://img.shields.io/badge/Linux-untested-yellow?logo=linux)
 
 **Draw on your screen. Nothing more, nothing less.**
 
@@ -20,18 +19,22 @@ Overmark is a screen annotation tool for presentations, screen sharing, tutorial
 - 🧩 **Open source**: MIT licensed, contributions welcome
 - 🌍 **Cross-platform**: Windows, macOS and Linux
 
-![Overmark toolbar](.github/toolbar.png)
-
 Built with [Tauri](https://tauri.app) and [Konva](https://konvajs.org).
 
 ## Install
 
-Download the latest release for your platform from the [Releases](https://github.com/robin-vjc/overmark/releases) page.
+| Platform                           | Status                                                                                 | Download                                                                                                                                                                                                                                                                                                       |
+| ---------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Windows 10/11                      | ![Windows: supported](https://img.shields.io/badge/supported-brightgreen?logo=windows) | [Installer](https://github.com/robin-vjc/overmark/releases/latest/download/Overmark_windows_x64-setup.exe) · [Portable](https://github.com/robin-vjc/overmark/releases/latest/download/Overmark_windows_x64-portable.exe)                                                                                      |
+| macOS 11+ (Apple Silicon or Intel) | ![macOS: untested](https://img.shields.io/badge/untested-yellow?logo=apple)            | [Disk image (.dmg)](https://github.com/robin-vjc/overmark/releases/latest/download/Overmark_macos_universal.dmg)                                                                                                                                                                                               |
+| Linux (x86-64)                     | ![Linux: untested](https://img.shields.io/badge/untested-yellow?logo=linux)            | [AppImage](https://github.com/robin-vjc/overmark/releases/latest/download/Overmark_linux_x86_64.AppImage) · [.deb](https://github.com/robin-vjc/overmark/releases/latest/download/Overmark_linux_amd64.deb) · [.rpm](https://github.com/robin-vjc/overmark/releases/latest/download/Overmark_linux_x86_64.rpm) |
+
+These links always download the latest version. Older versions and release notes are on the [Releases](https://github.com/robin-vjc/overmark/releases) page.
 
 On Windows, pick one:
 
-- **Installer** (`Overmark_x.y.z_x64-setup.exe`): adds a Start menu entry and an uninstaller, and installs WebView2 if it's missing.
-- **Portable** (`Overmark_x.y.z_x64-portable.exe`): nothing to install, just run it. It needs WebView2, which comes with Windows 11 and up-to-date Windows 10. Settings are kept in `%APPDATA%\app.overmark`.
+- **Installer**: adds a Start menu entry and an uninstaller, and installs WebView2 if it's missing. An `.msi` is also available on the Releases page for managed deployments.
+- **Portable**: nothing to install, just run it. It needs WebView2, which comes with Windows 11 and up-to-date Windows 10. Settings are kept in `%APPDATA%\app.overmark`.
 
 Windows may show a SmartScreen warning because the app isn't code-signed yet. Click **More info**, then **Run anyway**.
 
