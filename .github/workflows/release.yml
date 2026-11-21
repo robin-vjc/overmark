@@ -41,6 +41,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - uses: tauri-apps/tauri-action@v0
+        id: tauri
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -50,3 +51,14 @@ jobs:
           releaseDraft: true
           prerelease: false
           args: ${{ matrix.args }}
+      # The frontend is embedded in the binary, so the plain .exe runs without installing.
+      - name: Upload portable Windows executable
+        if: runner.os == 'Windows'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          portable="Overmark_${version}_x64-portable.exe"
+          cp src-tauri/target/release/overmark.exe "$portable"
+          gh release upload "$GITHUB_REF_NAME" "$portable" --clobber
