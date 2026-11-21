@@ -1,5 +1,14 @@
 # Overmark
 
+[![CI](https://github.com/robin-vjc/overmark/actions/workflows/ci.yml/badge.svg)](https://github.com/robin-vjc/overmark/actions/workflows/ci.yml)
+[![Latest release](https://img.shields.io/github/v/release/robin-vjc/overmark?sort=semver)](https://github.com/robin-vjc/overmark/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/robin-vjc/overmark/total)](https://github.com/robin-vjc/overmark/releases)
+[![License: MIT](https://img.shields.io/github/license/robin-vjc/overmark)](LICENSE)
+<br>
+![Windows: supported](https://img.shields.io/badge/Windows-supported-brightgreen?logo=windows)
+![macOS: untested](https://img.shields.io/badge/macOS-untested-yellow?logo=apple)
+![Linux: untested](https://img.shields.io/badge/Linux-untested-yellow?logo=linux)
+
 **Draw on your screen. Nothing more, nothing less.**
 
 Overmark is a screen annotation tool for presentations, screen sharing, tutorials and recordings. Draw freehand, add rectangles, ellipses, arrows and text on top of any app, then move, resize or delete them like objects in a slide deck.
@@ -14,6 +23,19 @@ Overmark is a screen annotation tool for presentations, screen sharing, tutorial
 <!-- TODO: add a short demo GIF here, e.g. ![Overmark demo](docs/demo.gif) -->
 
 Built with [Tauri](https://tauri.app) and [Konva](https://konvajs.org).
+
+## Install
+
+Download the latest release for your platform from the [Releases](https://github.com/robin-vjc/overmark/releases) page.
+
+On Windows, pick one:
+
+- **Installer** (`Overmark_x.y.z_x64-setup.exe`): adds a Start menu entry and an uninstaller, and installs WebView2 if it's missing.
+- **Portable** (`Overmark_x.y.z_x64-portable.exe`): nothing to install, just run it. It needs WebView2, which comes with Windows 11 and up-to-date Windows 10. Settings are kept in `%APPDATA%\app.overmark`.
+
+Windows may show a SmartScreen warning because the app isn't code-signed yet. Click **More info**, then **Run anyway**.
+
+On Linux, Wayland support is limited: some compositors restrict always-on-top overlays and global shortcuts.
 
 ## Shortcuts
 
@@ -44,24 +66,6 @@ On macOS, use <kbd>Cmd</kbd> instead of <kbd>Ctrl</kbd>.
 - More colors are on the toolbar. Click the size indicator for a slider, or scroll over the toolbar to change the size. Drag the toolbar by its handle.
 - With several monitors, you can draw on all of them.
 - Keyboard shortcuts other than the global one only work while Overmark has focus. After you click through to another app, click an annotation or the toolbar first.
-
-## Install
-
-Download the latest release for your platform from the [Releases](https://github.com/robin-vjc/overmark/releases) page.
-
-On Windows, pick one:
-
-- **Installer** (`Overmark_x.y.z_x64-setup.exe`): adds a Start menu entry and an uninstaller, and installs WebView2 if it's missing.
-- **Portable** (`Overmark_x.y.z_x64-portable.exe`): nothing to install, just run it. It needs WebView2, which comes with Windows 11 and up-to-date Windows 10. Settings are kept in `%APPDATA%\app.overmark`.
-
-Windows may show a SmartScreen warning because the app isn't code-signed yet. Click **More info**, then **Run anyway**.
-
-| Platform        | Status                                                                            |
-| --------------- | --------------------------------------------------------------------------------- |
-| Windows 10/11   | ✅ Supported                                                                      |
-| macOS 11+       | 🧪 Untested: feedback welcome                                                     |
-| Linux (X11)     | 🧪 Untested: feedback welcome                                                     |
-| Linux (Wayland) | ⚠️ Limited: some compositors restrict always-on-top overlays and global shortcuts |
 
 ## Build from source
 
