@@ -1,7 +1,7 @@
 {
   "name": "overmark",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Draw on your screen. Lightweight, private, open-source screen annotation.",
   "license": "MIT",
   "type": "module",

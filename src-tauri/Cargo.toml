@@ -1,6 +1,6 @@
 [package]
 name = "overmark"
-version = "1.0.0"
+version = "1.0.1"
 description = "Draw on your screen. Lightweight, private, open-source screen annotation."
 authors = ["Overmark contributors"]
 license = "MIT"
