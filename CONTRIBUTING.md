@@ -53,6 +53,10 @@ src-tauri/src/           Backend (Rust)
 └─ hotkeys.rs            Global show/hide shortcut
 ```
 
+## App icon
+
+The app icon is drawn in [`app-icon.svg`](app-icon.svg). After editing it, run `pnpm icons` to regenerate the PNG, ICO and ICNS files in `src-tauri/icons/`.
+
 ## Guidelines
 
 - Keep it light. Avoid new dependencies unless they clearly pay for themselves.

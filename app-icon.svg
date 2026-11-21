@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2a33"/>
+      <stop offset="1" stop-color="#16161b"/>
+    </linearGradient>
+    <linearGradient id="pane" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.02"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Base tile with margins, as macOS and Windows icons expect. -->
+  <rect x="72" y="72" width="880" height="880" rx="196" fill="url(#bg)"/>
+
+  <!-- A "glass pane" the annotations sit on. -->
+  <rect x="196" y="236" width="632" height="472" rx="40" fill="url(#pane)" stroke="#ffffff" stroke-opacity="0.16" stroke-width="12"/>
+
+  <!-- Yellow highlighter stroke. -->
+  <path d="M300 600 L620 600" stroke="#facc15" stroke-opacity="0.85" stroke-width="56" stroke-linecap="round"/>
+
+  <!-- Hand-drawn red circle: the "O" of Overmark. Ends overlap like a quick pen loop. -->
+  <path d="M640 340
+           C 560 270, 380 280, 330 380
+           C 280 480, 350 590, 500 600
+           C 650 610, 730 520, 700 420
+           C 680 355, 610 320, 540 322"
+        fill="none" stroke="#ef4444" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Pen, resting at the end of the loop. -->
+  <g transform="translate(554 308) rotate(45)">
+    <rect x="-34" y="-250" width="68" height="200" rx="18" fill="#f5f5f7"/>
+    <rect x="-34" y="-110" width="68" height="34" fill="#3b82f6"/>
+    <path d="M-34 -50 L34 -50 L0 20 Z" fill="#f5f5f7"/>
+    <path d="M-12 -4 L12 -4 L0 20 Z" fill="#ef4444"/>
+  </g>
+</svg>

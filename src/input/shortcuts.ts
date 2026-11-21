@@ -1,11 +1,17 @@
 import { PALETTE, type ToolId } from "../settings";
 
+export type SizeKind = "stroke" | "font";
+
 /** Everything the toolbar and keyboard shortcuts can trigger. */
 export interface Actions {
   setTool(tool: ToolId): void;
   setColor(color: string): void;
   /** Grows (`+1`) or shrinks (`-1`) the selection, or the current tool's width/font size. */
   resize(direction: 1 | -1): void;
+  /** What the size slider controls right now: the selection, or the current tool. */
+  sizeTarget(): { kind: SizeKind; value: number };
+  /** Sets a stroke width or font size for new shapes and for matching selected shapes. */
+  setSize(kind: SizeKind, value: number): void;
   deleteSelection(): void;
   undo(): void;
   redo(): void;

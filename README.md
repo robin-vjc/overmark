@@ -53,7 +53,7 @@ On macOS, use <kbd>Cmd</kbd> instead of <kbd>Ctrl</kbd>.
 
 - With shapes selected, <kbd>Ctrl</kbd>+<kbd>Scroll</kbd> and the color keys change those shapes.
 - In Select mode, double-click text to edit it. <kbd>Esc</kbd> or <kbd>Ctrl</kbd>+<kbd>Enter</kbd> finishes editing.
-- More colors are available on the toolbar. Scrolling over the toolbar also changes the size.
+- More colors are available on the toolbar. Click the size indicator on the toolbar for a slider, or scroll over the toolbar to change the size.
 - Keyboard shortcuts other than the global one only work while Overmark has focus. After you click through to another app, click an annotation or the toolbar first.
 
 ## Install
@@ -72,7 +72,7 @@ Download the latest release for your platform from the [Releases](../../releases
 Prerequisites: [Rust](https://rustup.rs), [Node.js](https://nodejs.org) 20.19+, [pnpm](https://pnpm.io), and the [Tauri prerequisites](https://v2.tauri.app/start/prerequisites/) for your OS.
 
 ```sh
-git clone https://github.com/<you>/overmark.git
+git clone https://github.com/robin-vjc/overmark.git
 cd overmark
 pnpm install
 pnpm tauri dev      # run in development

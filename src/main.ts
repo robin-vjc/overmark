@@ -2,13 +2,13 @@ import { emit, listen } from "@tauri-apps/api/event";
 import type Konva from "konva";
 
 import { Selection } from "./canvas/selection";
-import { colorAttrs, colorKeys, sizeAttrs, sizeKeys, sizeOf } from "./canvas/shapes";
+import { colorAttrs, colorKeys, kindOf, sizeAttrs, sizeKeys, sizeOf } from "./canvas/shapes";
 import { createSurface } from "./canvas/stage";
 import { AttrsCommand, RemoveCommand } from "./history/commands";
 import { History } from "./history/history";
 import { bindHitTest } from "./input/hit-test";
 import { bindDrawingInput } from "./input/pointer";
-import { type Actions, bindResizeWheel, bindShortcuts } from "./input/shortcuts";
+import { type Actions, bindResizeWheel, bindShortcuts, type SizeKind } from "./input/shortcuts";
 import { backend, isPrimaryWindow, onWindowEvent } from "./ipc";
 import { clamp, FONT_SIZE, SettingsSync, STROKE_WIDTH, type ToolId } from "./settings";
 import { PenTool } from "./tools/pen";
@@ -22,6 +22,12 @@ import "./styles.css";
 /** Multiplier per Ctrl+Scroll step. */
 const RESIZE_STEP = 1.15;
 const APPLY_COLOR_EVENT = "selection:apply-color";
+const APPLY_SIZE_EVENT = "selection:apply-size";
+
+interface SizePayload {
+  kind: SizeKind;
+  value: number;
+}
 
 async function main(): Promise<void> {
   const settings = await SettingsSync.init(isPrimaryWindow);
@@ -91,6 +97,18 @@ async function main(): Promise<void> {
         settings.update({ strokeWidth: clamp(step(settings.current.strokeWidth), STROKE_WIDTH) });
       }
     },
+    sizeTarget: () => {
+      const node = selection.nodes[0];
+      if (node) return { kind: kindOf(node) === "text" ? "font" : "stroke", value: sizeOf(node) };
+      return currentTool() === "text"
+        ? { kind: "font", value: settings.current.fontSize }
+        : { kind: "stroke", value: settings.current.strokeWidth };
+    },
+    setSize: (kind, value) => {
+      settings.update(kind === "font" ? { fontSize: value } : { strokeWidth: value });
+      // Resize selected shapes on every monitor, not just this one.
+      void emit<SizePayload>(APPLY_SIZE_EVENT, { kind, value });
+    },
     deleteSelection: () => selection.deleteSelected(),
     undo: () => {
       editor.commit();
@@ -125,6 +143,14 @@ async function main(): Promise<void> {
   await listen<string>(APPLY_COLOR_EVENT, ({ payload: color }) =>
     applyToSelection(colorKeys, (node) => colorAttrs(node, color)),
   );
+  await listen<SizePayload>(APPLY_SIZE_EVENT, ({ payload: { kind, value } }) =>
+    applyToSelection(
+      sizeKeys,
+      // Font sizes only apply to text, and stroke widths only to other shapes.
+      (node) => ((kindOf(node) === "text") === (kind === "font") ? sizeAttrs(node, value) : {}),
+      "resize",
+    ),
+  );
 
   const applyTool = (tool: ToolId) => {
     const selecting = tool === "select";
@@ -150,7 +176,7 @@ async function main(): Promise<void> {
   bindResizeWheel(container, actions);
   bindHitTest({
     stage,
-    interactive: () => (toolbar ? [toolbar.element] : []),
+    interactive: () => toolbar?.interactiveElements() ?? [],
     busy: () => editor.isEditing,
   });
 }
