@@ -1,6 +1,8 @@
-# <img src="src-tauri/icons/128x128@2x.png" alt="" width="44" align="center"> Overmark
+<p align="center"><img src="src-tauri/icons/128x128@2x.png" alt="" width="96"></p>
 
-![Overmark toolbar](.github/toolbar.png)
+<h1 align="center">Overmark</h1>
+
+<p align="center"><img src=".github/toolbar.png" alt="Overmark toolbar"></p>
 
 <p align="center">
   <a href="https://github.com/robin-vjc/overmark/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/robin-vjc/overmark/actions/workflows/ci.yml/badge.svg"></a>
