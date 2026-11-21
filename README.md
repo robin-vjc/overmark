@@ -28,6 +28,29 @@ However, I wanted something that is:
 
 None of these quite fit what I was looking for, so I built Overmark.
 
+### How it compares
+
+|                                                  | Overmark |   Epic Pen    |  ZoomIt   | gInk |     Pointofix     |
+| ------------------------------------------------ | :------: | :-----------: | :-------: | :--: | :---------------: |
+| Free                                             |    ✅    | 🟡 Basic only |    ✅     |  ✅  |        ✅         |
+| Open source                                      |    ✅    |      ❌       |    ✅     |  ✅  | 🟡 Freeware[^src] |
+| Windows                                          |    ✅    |      ✅       |    ✅     |  ✅  |        ✅         |
+| macOS                                            | ✅[^os]  |      ❌       |    ✅     |  ❌  |        ❌         |
+| Linux                                            | ✅[^os]  |      ❌       |    ❌     |  ❌  |        ❌         |
+| Draw over a live screen and keep using your apps |    ✅    |      ✅       | 🟡[^live] |  ✅  | ❌ Freezes screen |
+| Shapes and arrows                                |    ✅    |    🟡 Pro     |    ✅     |  ❌  |        ✅         |
+| Text                                             |    ✅    |    🟡 Pro     |    ✅     |  ❌  |        ✅         |
+
+Each of these tools also does things Overmark doesn't, such as zooming, screen recording, whiteboards and pen pressure. Overmark focuses on annotating a live screen and staying out of the way.
+
+[^src]: Pointofix is free to download, but we couldn't find published source code.
+
+[^os]: The macOS and Linux builds are not tested yet. Feedback is welcome.
+
+[^live]: ZoomIt's default drawing mode works on a frozen snapshot of the screen. Its LiveDraw mode draws over the live screen.
+
+_Comparison based on each project's website and documentation as of November 2026. Spotted a mistake? Please [open an issue](https://github.com/robin-vjc/overmark/issues)._
+
 ## Features
 
 - **Pen**: freehand drawing with adjustable width
