@@ -30,16 +30,18 @@ None of these quite fit what I was looking for, so I built Overmark.
 
 ### How it compares
 
-|                                                  | Overmark |   Epic Pen    |  ZoomIt   | gInk |     Pointofix     |
-| ------------------------------------------------ | :------: | :-----------: | :-------: | :--: | :---------------: |
-| Free                                             |    ✅    | 🟡 Basic only |    ✅     |  ✅  |        ✅         |
-| Open source                                      |    ✅    |      ❌       |    ✅     |  ✅  | 🟡 Freeware[^src] |
-| Windows                                          |    ✅    |      ✅       |    ✅     |  ✅  |        ✅         |
-| macOS                                            | ✅[^os]  |      ❌       |    ✅     |  ❌  |        ❌         |
-| Linux                                            | ✅[^os]  |      ❌       |    ❌     |  ❌  |        ❌         |
-| Draw over a live screen and keep using your apps |    ✅    |      ✅       | 🟡[^live] |  ✅  | ❌ Freezes screen |
-| Shapes and arrows                                |    ✅    |    🟡 Pro     |    ✅     |  ❌  |        ✅         |
-| Text                                             |    ✅    |    🟡 Pro     |    ✅     |  ❌  |        ✅         |
+|                                                  | Overmark |   Epic Pen    |  ZoomIt   |   gInk    |     Pointofix     |
+| ------------------------------------------------ | :------: | :-----------: | :-------: | :-------: | :---------------: |
+| Free                                             |    ✅    | 🟡 Basic only |    ✅     |    ✅     |        ✅         |
+| Open source                                      |    ✅    |      ❌       |    ✅     |    ✅     | 🟡 Freeware[^src] |
+| Windows                                          |    ✅    |      ✅       |    ✅     |    ✅     |        ✅         |
+| macOS                                            | ✅[^os]  |      ❌       |    ✅     |    ❌     |        ❌         |
+| Linux                                            | ✅[^os]  |      ❌       |    ❌     |    ❌     |        ❌         |
+| Draw over a live screen and keep using your apps |    ✅    |      ✅       | 🟡[^live] |    ✅     | ❌ Freezes screen |
+| Shapes and arrows                                |    ✅    |    🟡 Pro     |    ✅     |    ❌     |        ✅         |
+| Text                                             |    ✅    |    🟡 Pro     |    ✅     |    ❌     |        ✅         |
+| No telemetry                                     |    ✅    |    ❌[^ep]    |  🟡[^pt]  | ✅[^gink] | ❔ Not documented |
+| Download size (Windows)                          |  1.4 MB  |      ❔       |  242 MB   |  0.4 MB   |      1.3 MB       |
 
 Each of these tools also does things Overmark doesn't, such as zooming, screen recording, whiteboards and pen pressure. Overmark focuses on annotating a live screen and staying out of the way.
 
@@ -48,6 +50,12 @@ Each of these tools also does things Overmark doesn't, such as zooming, screen r
 [^os]: The macOS and Linux builds are not tested yet. Feedback is welcome.
 
 [^live]: ZoomIt's default drawing mode works on a frozen snapshot of the screen. Its LiveDraw mode draws over the live screen.
+
+[^ep]: Epic Pen's [privacy policy](https://epicpen.com/privacy) covers the app and says usage data is collected automatically. The free Basic version also shows in-app ads.
+
+[^pt]: PowerToys diagnostic data is [optional and off by default](https://github.com/microsoft/PowerToys/blob/main/DATA_AND_PRIVACY.md).
+
+[^gink]: No network code found in gInk's source.
 
 _Comparison based on each project's website and documentation as of November 2026. Spotted a mistake? Please [open an issue](https://github.com/robin-vjc/overmark/issues)._
 
