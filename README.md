@@ -59,7 +59,6 @@ On macOS, use <kbd>Cmd</kbd> instead of <kbd>Ctrl</kbd>.
 - Hold <kbd>Shift</kbd> while drawing for squares, circles and 45° arrows.
 - With shapes selected, <kbd>Ctrl</kbd>+<kbd>Scroll</kbd> and the color keys change those shapes.
 - In Select mode, double-click text to edit it. <kbd>Esc</kbd> or <kbd>Ctrl</kbd>+<kbd>Enter</kbd> finishes editing.
-- Overmark sits in the system tray: click its icon to show or hide the overlay, or right-click it to quit.
 - Keyboard shortcuts other than the global one only work while Overmark has focus. After you click through to another app, click an annotation or the toolbar first.
 
 ## Build from source
