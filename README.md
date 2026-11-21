@@ -1,10 +1,22 @@
 # Overmark
 
-**Draw on your screen. Nothing more, nothing less.**
-
 Overmark is a lightweight, open-source screen annotation tool for presentations, screen sharing, tutorials and recordings. Draw freehand, add rectangles, ellipses, arrows and text on top of any app, then move, resize or delete them like objects in a slide deck.
 
 Built with [Tauri](https://tauri.app) and [Konva](https://konvajs.org). Runs on Windows, macOS and Linux.
+
+I find myself often wanting to draw on the screen while, e.g., giving presentations. There already are tools out there for this:
+* [EpicPen](https://epicpen.com/)
+* ZoomIt, in Microsoft's [PowerToys](https://github.com/microsoft/PowerToys)
+* [gInk](https://github.com/geovens/gInk)
+* [pointToFix](https://www.pointofix.de/hilfe_en.php)
+
+However, I wanted something
+* lightweight & fast -- overmark's memory and CPU footprints are tiny
+* simple to use
+* modern looking
+* private -- overmark does not have *any* telemetry at all; you can check the code and build it yourself
+
+None of the options above filled this gap. Hence why I created overmark.
 
 ## Features
 
@@ -17,18 +29,6 @@ Built with [Tauri](https://tauri.app) and [Konva](https://konvajs.org). Runs on 
 - **Compact, draggable toolbar**, plus keyboard shortcuts
 - **Multi-monitor**: one overlay per display
 - **Remembers your settings**: color, width, text size and toolbar position
-
-## Principles
-
-|                       |                                                                            |
-| --------------------- | -------------------------------------------------------------------------- |
-| 🔒 **Private**        | No network access, no telemetry, no accounts. Nothing leaves your machine. |
-| 🪶 **Lightweight**    | Small installer, low memory use, near-zero CPU when idle.                  |
-| ⚡ **Fast**           | Hardware-accelerated canvas, toggled instantly with a global shortcut.     |
-| 🌍 **Cross-platform** | Windows, macOS and Linux.                                                  |
-| 🧩 **Open source**    | MIT licensed. Contributions welcome.                                       |
-
-Privacy is enforced by the app's configuration, not just promised. The webview has a strict Content Security Policy that blocks outside connections, and the app is granted no network, filesystem or shell permissions ([`capabilities/default.json`](src-tauri/capabilities/default.json)). The only file it writes is its own `settings.json`.
 
 ## Shortcuts
 
@@ -78,6 +78,10 @@ pnpm install
 pnpm tauri dev      # run in development
 pnpm tauri build    # produce an installer
 ```
+
+## Note on Privacy
+
+Privacy is enforced by the app's configuration, not just promised. The webview has a strict Content Security Policy that blocks outside connections, and the app is granted no network, filesystem or shell permissions ([`capabilities/default.json`](src-tauri/capabilities/default.json)). The only file it writes is its own `settings.json`.
 
 ## Contributing
 
