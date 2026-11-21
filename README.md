@@ -20,7 +20,7 @@ Overmark is a screen annotation tool for presentations, screen sharing, tutorial
 - 🧩 **Open source**: MIT licensed, contributions welcome
 - 🌍 **Cross-platform**: Windows, macOS and Linux
 
-<!-- TODO: add a short demo GIF here, e.g. ![Overmark demo](docs/demo.gif) -->
+![Overmark toolbar](.github/toolbar.png)
 
 Built with [Tauri](https://tauri.app) and [Konva](https://konvajs.org).
 
