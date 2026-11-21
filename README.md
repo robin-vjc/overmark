@@ -15,40 +15,34 @@ Overmark is a screen annotation tool for presentations, screen sharing, tutorial
 
 Built with [Tauri](https://tauri.app) and [Konva](https://konvajs.org).
 
-## Features
-
-- **Pen**: freehand drawing with adjustable width
-- **Rectangle, ellipse and arrow**: quick shapes for highlighting (hold <kbd>Shift</kbd> for squares, circles and 45° arrows)
-- **Text**: type anywhere on screen, with adjustable size
-- **Select, move, resize, rotate**: click any annotation to drag it or resize it with handles
-- **Undo and redo everything**: drawing, moving, resizing, recoloring, deleting, text edits and clearing
-- **Compact, draggable toolbar**, plus keyboard shortcuts
-- **Multi-monitor**: one overlay per display
-
 ## Shortcuts
 
 On macOS, use <kbd>Cmd</kbd> instead of <kbd>Ctrl</kbd>.
 
-| Action                        | Shortcut                                                                     |
-| ----------------------------- | ---------------------------------------------------------------------------- |
-| Show or hide overlay (global) | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>                                |
-| Select / click-through        | <kbd>V</kbd>                                                                 |
-| Pen                           | <kbd>P</kbd>                                                                 |
-| Rectangle                     | <kbd>R</kbd>                                                                 |
-| Ellipse                       | <kbd>E</kbd>                                                                 |
-| Arrow                         | <kbd>A</kbd>                                                                 |
-| Text                          | <kbd>T</kbd>                                                                 |
-| Red / yellow / green / blue   | <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd>                          |
-| Pen width or text size        | <kbd>Ctrl</kbd>+<kbd>Scroll</kbd>                                            |
-| Delete selected               | <kbd>Del</kbd>                                                               |
-| Undo                          | <kbd>Ctrl</kbd>+<kbd>Z</kbd>                                                 |
-| Redo                          | <kbd>Ctrl</kbd>+<kbd>Y</kbd> / <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd> |
-| Clear all                     | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd>                                |
-| Deselect, then back to Select | <kbd>Esc</kbd>                                                               |
+|     | Action                                      | Shortcut                                                                     |
+| :-: | ------------------------------------------- | ---------------------------------------------------------------------------- |
+| 👁️  | Show or hide overlay (works from any app)   | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>                                |
+| 🖱️  | Select, move, resize, rotate; click-through | <kbd>V</kbd>                                                                 |
+| ✏️  | Pen                                         | <kbd>P</kbd>                                                                 |
+| ⬜  | Rectangle                                   | <kbd>R</kbd>                                                                 |
+| ⭕  | Ellipse                                     | <kbd>E</kbd>                                                                 |
+| ↗️  | Arrow                                       | <kbd>A</kbd>                                                                 |
+| 🔤  | Text                                        | <kbd>T</kbd>                                                                 |
+| 🎨  | Red / yellow / green / blue                 | <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd>                          |
+| 📏  | Pen width or text size                      | <kbd>Ctrl</kbd>+<kbd>Scroll</kbd>                                            |
+| 🗑️  | Delete selected                             | <kbd>Del</kbd>                                                               |
+| ↩️  | Undo                                        | <kbd>Ctrl</kbd>+<kbd>Z</kbd>                                                 |
+| ↪️  | Redo                                        | <kbd>Ctrl</kbd>+<kbd>Y</kbd> / <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd> |
+| 🧹  | Clear all                                   | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd>                                |
+| ⏹️  | Deselect, then back to Select               | <kbd>Esc</kbd>                                                               |
 
+- In Select mode, clicks go through to the app underneath unless you click an annotation or the toolbar.
+- Hold <kbd>Shift</kbd> while drawing for squares, circles and 45° arrows.
 - With shapes selected, <kbd>Ctrl</kbd>+<kbd>Scroll</kbd> and the color keys change those shapes.
 - In Select mode, double-click text to edit it. <kbd>Esc</kbd> or <kbd>Ctrl</kbd>+<kbd>Enter</kbd> finishes editing.
-- More colors are available on the toolbar. Click the size indicator on the toolbar for a slider, or scroll over the toolbar to change the size.
+- Undo and redo cover everything: drawing, moving, resizing, recoloring, deleting, text edits and clearing.
+- More colors are on the toolbar. Click the size indicator for a slider, or scroll over the toolbar to change the size. Drag the toolbar by its handle.
+- With several monitors, you can draw on all of them.
 - Keyboard shortcuts other than the global one only work while Overmark has focus. After you click through to another app, click an annotation or the toolbar first.
 
 ## Install
