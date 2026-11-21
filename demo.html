@@ -1,0 +1,79 @@
+<!doctype html>
+<!--
+  Browser preview of the overlay on top of a sample slide, with the Tauri backend simulated.
+  Run `pnpm dev` and open http://localhost:1420/demo.html. Not part of the app build.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Overmark demo</title>
+    <script type="module" src="/scripts/tauri-mock.ts"></script>
+    <script type="module" src="/src/main.ts"></script>
+    <style>
+      /* Sized in `em` relative to the window width, so the slide fits any window. */
+      .slide {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        padding: 8em 7.5em 0;
+        background: linear-gradient(#f8fafc, #e8edf4);
+        color: #0f172a;
+        font-family: system-ui, "Segoe UI", sans-serif;
+        font-size: 1.25vw;
+      }
+      .slide h1 {
+        margin: 0;
+        font-size: 2.5em;
+      }
+      .slide p {
+        margin: 0.4em 0 0;
+        font-size: 1.25em;
+        color: #64748b;
+      }
+      .chart {
+        display: flex;
+        align-items: flex-end;
+        gap: 3.5em;
+        height: 16em;
+        margin-top: 2.5em;
+        padding-left: 2.5em;
+        border-bottom: 2px solid #cbd5e1;
+      }
+      .bar {
+        width: 6em;
+        border-radius: 0.4em 0.4em 0 0;
+        background: #94a3b8;
+      }
+      .labels {
+        display: flex;
+        gap: 3.5em;
+        margin-top: 0.6em;
+        padding-left: 2.5em;
+        color: #334155;
+      }
+      .labels span {
+        width: 6em;
+        font-size: 1.1em;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body data-tool="select">
+    <div class="slide" aria-hidden="true">
+      <h1>Quarterly results</h1>
+      <p>Revenue by region, in millions</p>
+      <div class="chart">
+        <div class="bar" style="height: 8.75em"></div>
+        <div class="bar" style="height: 11.5em"></div>
+        <div class="bar" style="height: 7.2em"></div>
+        <div class="bar" style="height: 15em"></div>
+        <div class="bar" style="height: 12.8em"></div>
+      </div>
+      <div class="labels">
+        <span>North</span><span>South</span><span>East</span><span>West</span><span>Online</span>
+      </div>
+    </div>
+    <div id="stage"></div>
+  </body>
+</html>

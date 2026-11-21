@@ -8,6 +8,8 @@ Thanks for helping out! Bug reports, ideas and pull requests are all welcome.
 2. `pnpm install`
 3. `pnpm tauri dev`
 
+To work on the UI without the desktop app, run `pnpm dev` and open http://localhost:1420/demo.html. It runs the overlay in a normal browser over a sample slide, with the Rust backend simulated by `scripts/tauri-mock.ts`. Click-through and global shortcuts don't work there. This is also how `.github/toolbar.png` was made.
+
 ## Before opening a pull request
 
 ```sh
