@@ -26,6 +26,11 @@ try {
   for (const file of DESKTOP_ICONS) {
     copyFileSync(join(out, file), join(iconsDir, file));
   }
+  // The tray icon has its own source without the outer margin, so it isn't undersized.
+  const trayOut = join(out, "tray");
+  const traySource = join(iconsDir, "tray-icon.svg");
+  execSync(`pnpm tauri icon "${traySource}" --output "${trayOut}" --png 64`, { stdio: "inherit" });
+  copyFileSync(join(trayOut, "64x64.png"), join(iconsDir, "tray.png"));
 } finally {
   rmSync(out, { recursive: true, force: true });
 }

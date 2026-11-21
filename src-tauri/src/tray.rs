@@ -14,7 +14,8 @@ pub fn create(app: &AppHandle) -> tauri::Result<()> {
     let quit = MenuItem::with_id(app, QUIT, "Quit Overmark", true, None::<&str>)?;
     let menu = Menu::with_items(app, &[&toggle, &PredefinedMenuItem::separator(app)?, &quit])?;
 
-    let mut tray = TrayIconBuilder::with_id("main")
+    let tray = TrayIconBuilder::with_id("main")
+        .icon(tauri::include_image!("icons/tray.png"))
         .tooltip("Overmark")
         .menu(&menu)
         .show_menu_on_left_click(false)
@@ -34,9 +35,6 @@ pub fn create(app: &AppHandle) -> tauri::Result<()> {
                 passthrough::toggle_visibility(tray.app_handle());
             }
         });
-    if let Some(icon) = app.default_window_icon() {
-        tray = tray.icon(icon.clone());
-    }
     tray.build(app)?;
     Ok(())
 }
