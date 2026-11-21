@@ -113,6 +113,9 @@ export class TextEditor {
 }
 
 export class TextTool implements Tool {
+  /** Where the current click started, if it should create a text box. */
+  private pending: Point | undefined;
+
   constructor(
     private readonly ctx: ToolContext,
     private readonly editor: TextEditor,
@@ -122,15 +125,23 @@ export class TextTool implements Tool {
     // A click outside the text box being edited finishes it instead of starting a new one.
     if (this.editor.isEditing) {
       this.editor.commit();
+      this.pending = undefined;
       return;
     }
+    this.pending = p;
+  }
+
+  move(): void {}
+
+  // Opening the editor on pointer up (not down) keeps the browser's default
+  // mouse-down focus handling from immediately blurring the new text box.
+  up(): void {
+    const p = this.pending;
+    this.pending = undefined;
+    if (!p) return;
     const { color, fontSize } = this.ctx.settings.current;
     // Center the first line on the cursor.
     const node = createText(color, fontSize, p.x, p.y - (fontSize * 1.2) / 2);
     this.editor.start(node, true);
   }
-
-  move(): void {}
-
-  up(): void {}
 }
