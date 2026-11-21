@@ -13,16 +13,18 @@ Built with [Tauri](https://tauri.app) and [Konva](https://konvajs.org). Runs on 
 I often want to draw on my screen, for example while giving a presentation. There are already tools for this:
 
 - [Epic Pen](https://epicpen.com/)
-- ZoomIt, part of Microsoft's [PowerToys](https://github.com/microsoft/PowerToys)
+- [ZoomIt](https://github.com/microsoft/PowerToys), part of Microsoft's PowerToys
 - [gInk](https://github.com/geovens/gInk)
 - [Pointofix](https://www.pointofix.de/hilfe_en.php)
 
 However, I wanted something that is:
 
-- **Lightweight and fast**: near-zero CPU when idle, and a small installer
-- **Simple to use**: a compact toolbar plus single-key shortcuts
-- **Modern looking**
-- **Private**: no telemetry of any kind. You can read the code and build it yourself.
+- 🪶 **Lightweight and fast**: near-zero CPU when idle, and a small installer
+- 🎯 **Simple to use**
+- ✨ **Modern looking**
+- 🔒 **Private**: no telemetry of any kind ([see how](#privacy))
+- 🧩 **Open source**: MIT licensed, contributions welcome
+- 🌍 **Cross-platform**: Windows, macOS and Linux
 
 None of these quite fit what I was looking for, so I built Overmark.
 
@@ -89,7 +91,7 @@ pnpm tauri build    # produce an installer
 
 ## Privacy
 
-Privacy is enforced by the app's configuration, not just promised:
+Privacy is enforced by the app's configuration:
 
 - The webview has a strict Content Security Policy that blocks outside connections.
 - The app is granted no network, filesystem or shell permissions ([`capabilities/default.json`](src-tauri/capabilities/default.json)).
