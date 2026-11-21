@@ -19,7 +19,7 @@ I often want to draw on my screen, for example while giving a presentation. Ther
 
 However, I wanted something that is:
 
-- 🪶 **Lightweight and fast**: near-zero CPU when idle, and a small installer
+- ⚡ **Lightweight and fast**: near-zero CPU when idle, and a small installer
 - 🎯 **Simple to use**
 - ✨ **Modern looking**
 - 🔒 **Private**: no telemetry of any kind ([see how](#privacy))
